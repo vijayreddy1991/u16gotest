@@ -1,0 +1,26 @@
+jobs:
+  - name: golang-test
+    type: runSh
+    runtime:
+      container: true
+    steps:
+      - TASK:
+          runtime:
+            options:
+              imageName: "drydock/u16golall"
+              imageTag: master
+          script:
+            #- echo $PATH
+            #- export PATH="$PATH:/root/.gvm/bin/"
+            #- test -s "$HOME/.gvm/scripts/gvm" && source "$HOME/.gvm/scripts/gvm"
+            - gvm list
+            - gvm use 1.4
+            - go version
+            - gvm use 1.7.6
+            - go version
+            - gvm use 1.8.7
+            - go version
+            - gvm use 1.9.5
+            - go version
+            - gvm use 1.10.1
+            - go version
